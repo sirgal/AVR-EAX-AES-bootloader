@@ -63,7 +63,7 @@ int main( int argc, char *argv[] )
 
     file = open( argv[2], O_RDONLY );
 
-    if( port <= 0 ) {
+    if( file <= 0 ) {
         write( STDERR_FILENO, FILE_ERR_MSG, sizeof(FILE_ERR_MSG) );
         return -1;
     }
