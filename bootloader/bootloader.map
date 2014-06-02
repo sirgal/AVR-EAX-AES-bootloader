@@ -1,5 +1,5 @@
 
-AVRASM ver. 2.1.42  C:\Users\sirgal\Documents\myfiles\lab bck[\asms\bootloader\bootloader.asm Sun Jun 01 14:52:54 2014
+AVRASM ver. 2.1.42  C:\Users\sirgal\Documents\myfiles\boot_repository\bootloader\bootloader.asm Mon Jun 02 18:32:19 2014
 
 
 EQU  SIGNATURE_000 0000001e
@@ -515,9 +515,6 @@ EQU  BLOCKS_PER_PAGE 00000004
 EQU  KEY_ADDR     00000f88
 EQU  RESET_VECT   00000000
 EQU  USE_0th_PAGE 00000001
-EQU  port_used    00000043
-EQU  pin          00000005
-EQU  level        00000053
 EQU  Fosc         007a1200
 EQU  baud         00002580
 EQU  UBRR         00000033

@@ -13,14 +13,17 @@
 .equ USE_0th_PAGE	= 1
 
 ;////////////////////////PORT SETUP
-// use port letter...
-// A / B / C / D / E
-.equ port_used = 'C'
-// check status of pin number...
-.equ pin   = 5
-// load boot only if port is...
-// (S)ET (1) / (C)LEAR (0)
-.equ level = 'S'
+.include "check_port_state.asm"
+#define	check_port \
+	port_settings \
+/* use port letter... */\
+/* A / B / C / D / E  */\
+	C, \
+/* check status of pin number...*/\
+	5, \
+/* load boot only if port is... */\
+/* (S)ET (1) / (C)LEAR (0)      */\
+	S
 
 ;////////////////////////BAUD RATE SETUP
 .equ Fosc = 8000000	;clock frequency
@@ -56,8 +59,8 @@ BOOT_START:
 	ldi		temp_0,	( 1 << URSEL ) | ( 1 << UCSZ1 ) | ( 1 << UCSZ0 )
 	out		UCSRC,	temp_0
 
-	;inline compile-time state machine
-	.include "check_port_state.asm"
+	;decide if we need to load boot
+	check_port
 
 	;if user asked to load boot - this will be skipped
 	;jmp		RESET_VECT		
